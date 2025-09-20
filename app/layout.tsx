@@ -13,11 +13,10 @@ const atkinsonHyperlegible = Atkinson_Hyperlegible({
 })
 
 export const metadata: Metadata = {
-  title: "AccessiQuest - Level up your code, unlock the web for everyone!",
-  description: "Gamified web accessibility learning through daily 10-minute exercises for students",
-  generator: "v0.app",
+  title: "Easy Access For All - AccessiQuest",
+  description: "Learn web accessibility through interactive quests and challenges. Improve your skills and make the web inclusive for everyone.",
   keywords: ["accessibility", "web development", "education", "gamification", "WCAG"],
-  authors: [{ name: "AccessiQuest Team" }],
+  authors: [{ name: "Er. Monisha Sharma" }],
   viewport: "width=device-width, initial-scale=1",
 }
 
