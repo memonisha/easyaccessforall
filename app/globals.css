@@ -1,0 +1,461 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Adding OpenDyslexic font from provided URL for homepage only */
+@font-face {
+  font-family: "OpenDyslexic";
+  src: url("https://hebbkx1anhila5yf.public.blob.vercel-storage.com/OpenDyslexic3-Regular-0gWHn49FLqpmuVXCFd2s7Bw2bVpJO9.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --background: oklch(0.99 0.005 180); /* Near-white with subtle warmth */
+  --foreground: oklch(0.15 0.02 240); /* Very dark blue-gray for maximum contrast */
+  --card: oklch(1 0 0); /* Pure white for cards */
+  --card-foreground: oklch(0.15 0.02 240); /* Very dark text on cards */
+  --popover: oklch(1 0 0); /* Pure white for popovers */
+  --popover-foreground: oklch(0.15 0.02 240); /* Very dark text on popovers */
+  /* Restored greenish color theme for AccessiQuest */
+  --primary: oklch(0.45 0.15 140); /* Deep green for primary actions */
+  --primary-foreground: oklch(1 0 0); /* White text on primary actions */
+  --secondary: oklch(0.55 0.12 120); /* Forest green for secondary */
+  --secondary-foreground: oklch(1 0 0); /* White text on secondary */
+  --muted: oklch(0.96 0.01 180); /* Very light warm gray */
+  --muted-foreground: oklch(0.35 0.02 240); /* Dark gray for muted text */
+  --accent: oklch(0.6 0.18 160); /* Teal-green accent */
+  --accent-foreground: oklch(1 0 0); /* White text on accent */
+  --destructive: oklch(0.55 0.22 12); /* Rose-600 for destructive actions */
+  --destructive-foreground: oklch(1 0 0); /* White text on destructive actions */
+  --border: oklch(0.85 0.01 240); /* Light gray for borders */
+  --input: oklch(1 0 0); /* White for input fields */
+  --ring: oklch(0.6 0.18 160); /* Teal-green for focus rings */
+  --chart-1: oklch(0.45 0.15 140); /* Deep green for chart 1 */
+  --chart-2: oklch(0.55 0.12 120); /* Forest green for chart 2 */
+  --chart-3: oklch(0.6 0.18 160); /* Teal-green for chart 3 */
+  --chart-4: oklch(0.96 0.01 180); /* Light gray for chart 4 */
+  --chart-5: oklch(0.15 0.02 240); /* Dark blue-gray for chart 5 */
+  --radius: 0.75rem; /* Slightly larger radius for friendlier feel */
+  --sidebar: oklch(1 0 0); /* White for sidebar */
+  --sidebar-foreground: oklch(0.15 0.02 240); /* Dark text for sidebar */
+  --sidebar-primary: oklch(0.45 0.15 140); /* Deep green for sidebar primary */
+  --sidebar-primary-foreground: oklch(1 0 0); /* White text on sidebar primary */
+  --sidebar-accent: oklch(0.6 0.18 160); /* Teal-green for sidebar accents */
+  --sidebar-accent-foreground: oklch(1 0 0); /* White text on sidebar accent */
+  --sidebar-border: oklch(0.85 0.01 240); /* Light gray for sidebar borders */
+  --sidebar-ring: oklch(0.6 0.18 160); /* Teal-green for sidebar focus rings */
+
+  /* Homepage-specific font variables for OpenDyslexic */
+  --homepage-font-family: "OpenDyslexic", system-ui, sans-serif;
+  --homepage-base-font-size: 18px; /* Larger base size for better readability */
+  --homepage-line-height: 1.7; /* Increased line height for better readability */
+  --homepage-letter-spacing: 0.025em; /* Slightly more letter spacing */
+
+  /* Keep existing fonts for other pages */
+  --base-font-size: 16px;
+  --font-family: var(--font-atkinson), system-ui, sans-serif;
+  --line-height: 1.6;
+  --letter-spacing: 0.02em;
+}
+
+.dark {
+  --background: oklch(0.08 0.01 240); /* Very dark blue-gray background */
+  --foreground: oklch(0.95 0.01 180); /* Very light warm text */
+  --card: oklch(0.12 0.01 240); /* Dark card background */
+  --card-foreground: oklch(0.95 0.01 180); /* Light text on cards */
+  --popover: oklch(0.12 0.01 240); /* Dark popover background */
+  --popover-foreground: oklch(0.95 0.01 180); /* Light text on popovers */
+  /* Updated dark mode colors to match greenish theme */
+  --primary: oklch(0.65 0.15 140); /* Lighter green for primary in dark mode */
+  --primary-foreground: oklch(0.08 0.01 240); /* Dark text on primary */
+  --secondary: oklch(0.7 0.12 120); /* Lighter forest green for secondary */
+  --secondary-foreground: oklch(0.08 0.01 240); /* Dark text on secondary */
+  --muted: oklch(0.15 0.01 240); /* Dark muted background */
+  --muted-foreground: oklch(0.7 0.01 180); /* Light muted text */
+  --accent: oklch(0.75 0.18 160); /* Lighter teal-green accent */
+  --accent-foreground: oklch(0.08 0.01 240); /* Dark text on accent */
+  --destructive: oklch(0.65 0.22 12); /* Lighter destructive for dark mode */
+  --destructive-foreground: oklch(1 0 0); /* White text on destructive */
+  --border: oklch(0.2 0.01 240); /* Dark border */
+  --input: oklch(0.15 0.01 240); /* Dark input background */
+  --ring: oklch(0.75 0.18 160); /* Teal-green focus ring */
+  --chart-1: oklch(0.65 0.15 140); /* Lighter green for chart 1 */
+  --chart-2: oklch(0.7 0.12 120); /* Lighter forest green for chart 2 */
+  --chart-3: oklch(0.75 0.18 160); /* Lighter teal-green for chart 3 */
+  --chart-4: oklch(0.15 0.01 240); /* Dark for chart 4 */
+  --chart-5: oklch(0.95 0.01 180); /* Light for chart 5 */
+  --sidebar: oklch(0.12 0.01 240); /* Dark sidebar */
+  --sidebar-foreground: oklch(0.95 0.01 180); /* Light sidebar text */
+  --sidebar-primary: oklch(0.65 0.15 140); /* Lighter green for sidebar primary */
+  --sidebar-primary-foreground: oklch(0.08 0.01 240); /* Dark text on sidebar primary */
+  --sidebar-accent: oklch(0.15 0.01 240); /* Dark sidebar accent */
+  --sidebar-accent-foreground: oklch(0.95 0.01 180); /* Light text on sidebar accent */
+  --sidebar-border: oklch(0.2 0.01 240); /* Dark sidebar border */
+  --sidebar-ring: oklch(0.75 0.18 160); /* Teal-green sidebar focus ring */
+}
+
+/* Added homepage-specific class for OpenDyslexic font */
+.homepage-font {
+  font-family: var(--homepage-font-family);
+  font-size: var(--homepage-base-font-size);
+  line-height: var(--homepage-line-height);
+  letter-spacing: var(--homepage-letter-spacing);
+  word-spacing: 0.15em;
+}
+
+/* Added high contrast mode styles */
+.high-contrast {
+  --background: oklch(1 0 0); /* Pure white */
+  --foreground: oklch(0 0 0); /* Pure black */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0 0 0);
+  --border: oklch(0 0 0);
+  --ring: oklch(0 0 0);
+  --primary: oklch(0 0 0);
+  --primary-foreground: oklch(1 0 0);
+}
+
+/* Added color blindness simulation filters */
+.filter-protanopia {
+  filter: url("#protanopia-filter");
+}
+
+.filter-deuteranopia {
+  filter: url("#deuteranopia-filter");
+}
+
+.filter-tritanopia {
+  filter: url("#tritanopia-filter");
+}
+
+/* Added large click targets styles */
+.large-targets button,
+.large-targets a,
+.large-targets [role="button"] {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 12px 16px;
+}
+
+/* Added simplified UI styles */
+.simplified-ui {
+  --radius: 0.25rem;
+}
+
+.simplified-ui * {
+  box-shadow: none !important;
+  background-image: none !important;
+}
+
+.simplified-ui .animate-spin,
+.simplified-ui .animate-pulse,
+.simplified-ui .animate-bounce {
+  animation: none !important;
+}
+
+/* Added screen reader optimizations */
+.screen-reader-optimized .sr-only {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+@theme inline {
+  /* Updated font configuration to prioritize OpenDyslexic */
+  --font-sans: var(--font-atkinson), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    /* Updated to use customizable font properties */
+    font-size: var(--base-font-size);
+    font-family: var(--font-family);
+    line-height: var(--line-height);
+    letter-spacing: var(--letter-spacing);
+    word-spacing: 0.1em;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-balance;
+    /* Keep existing font for non-homepage headings */
+    font-family: var(--font-family);
+  }
+
+  /* Homepage-specific heading styles with OpenDyslexic */
+  .homepage-font h1,
+  .homepage-font h2,
+  .homepage-font h3,
+  .homepage-font h4,
+  .homepage-font h5,
+  .homepage-font h6 {
+    font-family: var(--homepage-font-family);
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  p {
+    @apply text-pretty;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
+  }
+
+  /* Enhanced focus indicators with higher contrast for low vision users */
+  .keyboard-navigation :focus-visible,
+  .homepage-font :focus-visible {
+    outline: 4px solid var(--ring);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 2px var(--background), 0 0 0 6px var(--ring);
+  }
+
+  /* Added smooth animations that respect motion preferences */
+  @keyframes gentle-float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes soft-glow {
+    0%,
+    100% {
+      box-shadow: 0 0 20px rgba(96, 165, 250, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 30px rgba(96, 165, 250, 0.5);
+    }
+  }
+
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-gentle-float {
+    animation: gentle-float 6s ease-in-out infinite;
+  }
+
+  .animate-soft-glow {
+    animation: soft-glow 4s ease-in-out infinite;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out;
+  }
+
+  /* Celebration animation keyframes */
+  @keyframes confetti-fall {
+    0% {
+      transform: translateY(-100vh) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes celebration-bounce {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-30px);
+    }
+    60% {
+      transform: translateY(-15px);
+    }
+  }
+
+  @keyframes success-glow {
+    0% {
+      box-shadow: 0 0 5px rgba(34, 197, 94, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(34, 197, 94, 0.8);
+    }
+    100% {
+      box-shadow: 0 0 5px rgba(34, 197, 94, 0.5);
+    }
+  }
+
+  @keyframes scale-in {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .animate-confetti-fall {
+    animation: confetti-fall 3s ease-in-out infinite;
+  }
+
+  .animate-celebration-bounce {
+    animation: celebration-bounce 1s ease-in-out;
+  }
+
+  .animate-success-glow {
+    animation: success-glow 2s ease-in-out infinite;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.3s ease-out;
+  }
+
+  /* Adding enhanced glow and floating effects for homepage cards */
+  @keyframes card-glow {
+    0%,
+    100% {
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(59, 130, 246, 0.4);
+    }
+    50% {
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4), 0 0 40px rgba(59, 130, 246, 0.6);
+    }
+  }
+
+  @keyframes card-float {
+    0%,
+    100% {
+      transform: translateY(0px) scale(1);
+    }
+    50% {
+      transform: translateY(-8px) scale(1.02);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+    }
+  }
+
+  .animate-card-glow {
+    animation: card-glow 4s ease-in-out infinite;
+  }
+
+  .animate-card-float {
+    animation: card-float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  @media (prefers-contrast: high) {
+    :root {
+      --foreground: oklch(0 0 0); /* Pure black text */
+      --background: oklch(1 0 0); /* Pure white background */
+      --border: oklch(0 0 0); /* Black borders */
+      --ring: oklch(0 0 0); /* Black focus rings */
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-gentle-float,
+    .animate-soft-glow,
+    .animate-fade-in-up {
+      animation: none !important;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Added reduce-motion class for manual control */
+  .reduce-motion *,
+  .reduce-motion *::before,
+  .reduce-motion *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Added SVG filters for color blindness simulation */
+svg.accessibility-filters {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
